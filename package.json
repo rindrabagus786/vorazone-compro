@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@astrojs/react": "^5.0.0",
-    "@astrojs/tailwind": "^5.1.5",
+    "@astrojs/tailwind": "^6.0.2",
     "astro": "^6.0.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.35.2",
