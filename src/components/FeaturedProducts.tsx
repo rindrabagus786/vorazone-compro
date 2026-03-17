@@ -1,0 +1,100 @@
+import { motion } from 'framer-motion';
+
+const products = [
+    {
+        name: 'Magnetic Wireless Charger Car Mount Holder',
+        description: 'Magnetic wireless charger that snaps perfectly onto your phone.',
+        price: '$24.99',
+        img: '/image02.webp',
+        emoji: '🔋',
+        url: 'https://vorazone.myshopify.com/products/magnetic-wireless-charger-car-mount-holder-for-12-13-14-pro-max-magsafe'
+    },
+    {
+        name: 'Mag Station Pro | 3-in-1 ',
+        description: '3-in-1 dock for your phone, watch, and earbuds.',
+        price: '$30.99',
+        img: '/image01.webp',
+        emoji: '⚡',
+        url: 'https://vorazone.myshopify.com/products/magstation-pro-3-in-1-magnetic-15w-wireless-charging-station-with-clock'
+    },
+    {
+        name: 'Digital Measuring Tape',
+        description: 'Electronic digital measuring tape with LCD screen for precise measurements.',
+        price: '$54.24',
+        img: '/image03.webp',
+        emoji: '📏',
+        url: 'https://vorazone.myshopify.com/products/electronic-digital-measuring-tape-lcd-screen-high-precision-distance-ruler-tool'
+    },
+    {
+        name: 'Automatic Touchless Soap Dispenser',
+        description: 'Touchless technology for a more hygienic home.',
+        price: '$29.99',
+        img: '/image04.webp',
+        emoji: '🧼',
+        url: 'https://vorazone.myshopify.com/products/automatic-touchless-soap-dispenser-wall-mounted-infrared-sensor-foam-soap-dispenser-for-kitchen-bathroom-hotel-school-office-no-drill-installation-usb-rechargeable-1000ml-capacity'
+    },
+];
+
+const FeaturedProducts = () => {
+    return (
+        <section id="products" className="section-padding">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                <div>
+                    <h2 className="text-4xl font-bold mb-4">Featured Products</h2>
+                    <p className="text-gray-600 max-w-xl">Discover our most popular items, handpicked to upgrade your daily tech experience.</p>
+                </div>
+                <a 
+                    href="https://vorazone.myshopify.com" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary font-bold hover:underline"
+                >
+                    View All Products
+                </a>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {products.map((product, index) => (
+                    <motion.div
+                        key={product.name}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="group"
+                    >
+                        <div className="bg-gray-50 rounded-3xl p-8 mb-6 relative overflow-hidden transition-all duration-500 group-hover:bg-primary/5 aspect-square flex items-center justify-center text-7xl">
+                            {product.img ? (
+                                <img 
+                                    src={product.img} 
+                                    alt={product.name} 
+                                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" 
+                                />
+                            ) : (
+                                <span className="group-hover:scale-110 transition-transform duration-500">
+                                    {product.emoji || '📦'}
+                                </span>
+                            )}
+                            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-500 pointer-events-none" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                        <p className="text-gray-500 text-sm mb-4 line-clamp-2">{product.description}</p>
+                        <div className="flex items-center justify-between mt-auto">
+                            <span className="font-bold text-lg">{product.price}</span>
+                            <a 
+                                href={product.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-text text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-primary transition-colors"
+                            >
+                                Buy Now
+                            </a>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
+export default FeaturedProducts;
